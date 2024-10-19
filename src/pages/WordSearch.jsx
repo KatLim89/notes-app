@@ -9,10 +9,12 @@ export default function WordSearch() {
   const [word, setWord] = useState("");
   const [relatedWords, setRelatedWords] = useState([]);
 
+  // User input function
   const handleInputChange = (e) => {
     setWord(e.target.value);
   };
 
+  // Calls on Datamuse API
   const searchRelatedWords = async () => {
     if (word) {
       const result = await axios.get(
@@ -22,6 +24,7 @@ export default function WordSearch() {
     }
   };
 
+  // Clear input & search results
   const clearSearh = () => {
     setWord("");
     setRelatedWords([]);
@@ -37,6 +40,7 @@ export default function WordSearch() {
     }
   }, [currentUser, navigate]);
 
+  // Logout function
   const handleLogout = () => {
     auth.signOut();
   };

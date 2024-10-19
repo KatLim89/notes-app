@@ -26,6 +26,7 @@ export default function Auth() {
     if (currentUser) navigate("/home");
   }, [currentUser, navigate]);
 
+  // Sign up function
   const handleSignUp = async (e) => {
     e.preventDefault();
     if (!email || !password) {
@@ -50,6 +51,7 @@ export default function Auth() {
     }
   };
 
+  // Log in function
   const handleLogin = async (e) => {
     e.preventDefault();
     if (!email || !password) {
@@ -74,6 +76,7 @@ export default function Auth() {
     }
   };
 
+  // Close modal
   const handleClose = () => {
     setModalShow(null);
     setEmail("");

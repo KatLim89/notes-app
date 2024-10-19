@@ -16,6 +16,7 @@ export default function Profile() {
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
 
+  // Uploaded image remains after page refresh
   useEffect(() => {
     if (!currentUser) {
       navigate("/login");
@@ -31,16 +32,19 @@ export default function Profile() {
     }
   }, [currentUser, navigate]);
 
+  // Logout function
   const handleLogout = () => {
     auth.signOut();
   };
 
+  // Select image file function
   const handleImageChange = (e) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
     }
   };
 
+  // Upload image function
   const handleSubmit = () => {
     const imageRef = ref(storage, `${currentUser.uid}.jpeg`);
     setLoading(true);
